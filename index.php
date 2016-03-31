@@ -12,12 +12,12 @@ require_once __DIR__ . '/config.php';
 
 if(API_KEY==='YOUR_API_KEY')
 {
-	echo '<span style="color:red;text-align:center">PLEASE SET YOUR API KEY IN config.php</span><br>'
+	echo '<span style="color:red;text-align:center">PLEASE SET YOUR API KEY IN config.php</span><br>';
 }
 
 if(API_CALLBACK==='YOUR_API_CALLBACK')
 {
-	echo '<span style="color:red;text-align:center">PLEASE SET YOUR API CALLBACK config.php</span><br>'
+	echo '<span style="color:red;text-align:center">PLEASE SET YOUR API CALLBACK config.php</span><br>';
 }
 
 ?>
