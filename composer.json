@@ -1,0 +1,24 @@
+{
+    "name": "ImpactSeo/killduplicate-api-php",
+    "type": "library",
+    "description": "PHP Example Library to use KillDuplicate API",
+    "keywords": ["duplicate","content"],
+    "homepage": "https://github.com/ImpactSeo/killduplicate-api-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hugo Maugey",
+            "email": "hugo@maugey.fr",
+            "homepage": "http://seohackers.fr/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-1": {
+            "KillDuplicate": "api_calls.php"
+        }
+    }
+}
