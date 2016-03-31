@@ -1,5 +1,5 @@
 {
-    "name": "ImpactSeo/killduplicate-api-php",
+    "name": "impact-seo/killduplicate-api-php",
     "type": "library",
     "description": "PHP Example Library to use KillDuplicate API",
     "keywords": ["duplicate","content"],

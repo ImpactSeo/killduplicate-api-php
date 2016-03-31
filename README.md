@@ -2,7 +2,7 @@
 PHP Example Library to use KillDuplicate API
 
 # Install this library
-composer require killduplicate-api-php
+composer require impact-seo/killduplicate-api-php
 or download and uncompress archive
 
 # Set config.php
