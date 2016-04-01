@@ -17,14 +17,14 @@ if(API_KEY==='YOUR_API_KEY')
 
 if(API_CALLBACK==='YOUR_API_CALLBACK')
 {
-	echo '<span style="color:red;text-align:center">PLEASE SET YOUR API CALLBACK config.php</span><br>';
+	echo '<span style="color:red;text-align:center">PLEASE SET YOUR API CALLBACK IN config.php</span><br>';
 }
 
 ?>
 
-<a href="examples/get_credits.php">Get your credits</a>
-<a href="examples/get_scan_price.php">Get scan price</a>
-<a href="examples/scan_text.php">Scan Text</a>
+<a href="examples/get_credits.php">Get your credits</a><br>
+<a href="examples/get_scan_price.php">Get scan price</a><br>
+<a href="examples/scan_text.php">Scan Text</a><br>
 
 
 </body>

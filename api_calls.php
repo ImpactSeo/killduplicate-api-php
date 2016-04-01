@@ -107,7 +107,7 @@ function get_scan_price($text, $format = 'json')
 function get_credits($format = 'json')
 {
 	$curl_options = [
-		CURLOPT_URL => API_ENDPOINT . 'credits/' . API_KEY . '/' . $format,
+		CURLOPT_URL => API_ENDPOINT . 'credits/' . rawurlencode(API_KEY) . '/' . $format,
 	    CURLOPT_SSL_VERIFYPEER => false,
 	    CURLOPT_RETURNTRANSFER => true,
 	    CURLOPT_CONNECTTIMEOUT => 30,

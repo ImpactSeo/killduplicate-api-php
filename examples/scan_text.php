@@ -15,7 +15,7 @@ $format = 'json';
 # How do you wish result : short|long
 $result = 'long';
 # Load your text
-$text = file_get_contents(__DIR__ . '/texts/text-example-1.txt');
+$text = file_get_contents(__DIR__ . '/../texts/text-example-1.txt');
 
 # Scan text 'json'
 $scan = scan_text($text, $format, $result);
@@ -25,12 +25,12 @@ echo 'You should store this text id '.$scan->data->text_id.' for retrieving it i
 
 
 # Scan text 'txt'
-// $scan = scan_text($text, $format);
+// $scan = scan_text($text, 'txt');
 // $scan = explode("\n", $scan);
 // echo 'Scanning this text will cost '.$scan[3].' credits. You have '. $scan[4] . ' remaining credits.';
 
 # Scan text 'xml'
-// $scan = scan_text($text, $format);
+// $scan = scan_text($text, 'xml');
 // $scan = simplexml_load_string(trim($scan), "SimpleXMLElement", LIBXML_NOEMPTYTAG);
 // echo 'Scanning this text will cost '.(string)$scan->data->credits.' credits. You have '. (string)$scan->data->account . ' remaining credits.';
 
