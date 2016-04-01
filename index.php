@@ -25,7 +25,7 @@ if(API_CALLBACK==='YOUR_API_CALLBACK')
 <a href="examples/get_credits.php">Get your credits</a><br>
 <a href="examples/get_scan_price.php">Get scan price</a><br>
 <a href="examples/scan_text.php">Scan Text</a><br>
-
+<a href="examples/list_scans.php">List Scans</a><br>
 
 </body>
 </html>

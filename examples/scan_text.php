@@ -18,10 +18,26 @@ $result = 'long';
 $text = file_get_contents(__DIR__ . '/../texts/text-example-1.txt');
 
 # Scan text 'json'
-$scan = scan_text($text, $format, $result);
-$scan = json_decode($scan);
-// print_r($scan);
-echo 'You should store this text id '.$scan->data->text_id.' for retrieving it in callback. This scan cost you '.$scan->data->cost.' credits. You have '. $scan->data->credits . ' remaining credits.';
+$scan_response = scan_text($text, $format, $result);
+echo $scan_response;
+$scan_json = json_decode($scan_response);
+print_r($scan_json, true);
+if($scan_json)
+{
+	if($scan_json->status==='success')
+	{
+		echo 'You should store this text id '.$scan_json->data->text_id.' for retrieving it in callback. This scan cost you '.$scan_json->data->cost.' credits. You have '. $scan_json->data->credits . ' remaining credits.';
+	}
+	else
+	{
+		echo 'An error occured : ' . $scan_json->message; 
+	}
+	
+}
+else
+{
+	echo 'An error occured : ' . $scan_response;	
+}
 
 
 # Scan text 'txt'

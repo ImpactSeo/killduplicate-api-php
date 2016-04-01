@@ -14,9 +14,27 @@ require_once __DIR__ . '/../api_calls.php';
 $text = file_get_contents(__DIR__ . '/../texts/text-example-1.txt');
 
 # Get scan price 'json'
-$cost = get_scan_price($text, 'json');
-$cost = json_decode($cost);
-echo 'Scanning this text will cost '.$cost->data->credits.' credits. You have '. $cost->data->account . ' remaining credits.';
+$cost_response = get_scan_price($text, 'json');
+echo $cost_response;
+$cost_json = json_decode($cost_response);
+print_r($cost_json, true);
+if($cost_json)
+{
+	if($cost_json->status==='success')
+	{
+		echo 'Scanning this text will cost '.$cost_json->data->credits.' credits. You have '. $cost_json->data->account . ' remaining credits.';
+	}
+	else
+	{
+		echo 'An error occured : ' . $cost_json->message; 
+	}
+	
+}
+else
+{
+	echo 'An error occured : ' . $cost_response;	
+}
+
 
 # Get scan price 'txt'
 // $cost = get_scan_price($text, 'txt');
