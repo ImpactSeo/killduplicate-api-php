@@ -19,21 +19,24 @@ $text = file_get_contents(__DIR__ . '/../texts/text-example-1.txt');
 
 # Scan text 'json'
 $scan_response = scan_text($text, $format, $result);
-echo $scan_response;
+// echo $scan_response;
 $scan_json = json_decode($scan_response);
-print_r($scan_json, true);
+// print_r($scan_json, true);
 if($scan_json)
 {
 	if($scan_json->status==='success')
 	{
-		echo 'You should store this text id (or API Call Id) '.$scan_json->data->id.' for retrieving it in callback. This scan cost you '.$scan_json->data->cost.' credits. You have '. $scan_json->data->credits . ' remaining credits.<br>';
+		$text_id = $scan_json->data->id;
+		$text_scan_cost = $scan_json->data->cost;
+		$user_remaining_credits = $scan_json->data->credits;
+
+		echo 'You should store this text id (or API Call Id) <strong>' . $text_id . '</strong> for retrieving it in callback. This scan cost you ' . $text_scan_cost . ' credits. You have '. $user_remaining_credits . ' remaining credits.<br>';
 		echo '<pre>'.$text.'</pre>';
 	}
 	else
 	{
 		echo 'An error occured : ' . $scan_json->message; 
 	}
-	
 }
 else
 {

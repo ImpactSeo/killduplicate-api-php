@@ -7,7 +7,7 @@ $rawData = json_decode($rawData);
 error_log('api_callback  - text id : ' . $rawData->id);
 error_log('api_callback  - result : ' . print_r($rawData, true));
 
-$result_dir = __DIR__ . '/../results/';
+$result_dir = __DIR__ . '/results/';
 
 if($rawData)
 {

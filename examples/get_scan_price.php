@@ -22,14 +22,16 @@ if($cost_json)
 {
 	if($cost_json->status==='success')
 	{
-		echo 'Scanning this text will cost '.$cost_json->data->credits.' credits. You have '. $cost_json->data->account . ' remaining credits.<br>';
+		$text_scan_cost = $cost_json->data->credits;
+		$user_remaining_credits = $cost_json->data->account;
+
+		echo 'Scanning this text will cost ' . $text_scan_cost . ' credits. You have '. $user_remaining_credits . ' remaining credits.<br>';
 		echo '<pre>'.$text.'</pre>';
 	}
 	else
 	{
 		echo 'An error occured : ' . $cost_json->message; 
 	}
-	
 }
 else
 {

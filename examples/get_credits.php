@@ -18,7 +18,9 @@ if($credits_json)
 {
 	if($credits_json->status==='success')
 	{
-		echo 'You have ' . $credits_json->data->credits . ' remaining credits';		
+		$user_remaining_credits = $credits_json->data->credits;
+		
+		echo 'You have ' . $user_remaining_credits . ' remaining credits';		
 	}
 	else
 	{
