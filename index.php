@@ -20,6 +20,7 @@ if(API_CALLBACK==='YOUR_API_CALLBACK')
 	echo '<span style="color:red;text-align:center">PLEASE SET YOUR API CALLBACK IN config.php</span><br>';
 }
 
+$result_dir = __DIR__ . '/results/';
 if(!is_dir($result_dir) || !is_writable($result_dir))
 {
 	echo '<span style="color:red;text-align:center">PLEASE SET results DIRECTORY WRITE PERMISSIONS</span><br>';}

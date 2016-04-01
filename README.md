@@ -21,8 +21,12 @@ Connect to your [killduplicate account](https://www.killduplicate.com/en/login).
 
 Be sure your callback is reachable over the network. 
 
+For file permission issues (replace www-data by your webserver username)
+```
 chown -R www-data vendor/impact-seo/killduplicate-api-php/results
 chgrp -R www-data vendor/impact-seo/killduplicate-api-php/results
 chmod -R 775 vendor/impact-seo/killduplicate-api-php/results
+```
 
 ## Testing different return formats
+works in progress
