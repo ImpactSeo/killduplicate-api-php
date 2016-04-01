@@ -27,10 +27,9 @@ if($scan_json)
 	if($scan_json->status==='success')
 	{
 		$text_id = $scan_json->data->id;
-		$text_scan_cost = $scan_json->data->cost;
-		$user_remaining_credits = $scan_json->data->credits;
+		$text_scan_cost = $scan_json->data->credits;
 
-		echo 'You should store this text id (or API Call Id) <strong>' . $text_id . '</strong> for retrieving it in callback. This scan cost you ' . $text_scan_cost . ' credits. You have '. $user_remaining_credits . ' remaining credits.<br>';
+		echo 'You should store this text id (or API Call Id) <strong>' . $text_id . '</strong> for retrieving it in callback. This scan cost you ' . $text_scan_cost . ' credits. <br>';
 		echo '<pre>'.$text.'</pre>';
 	}
 	else

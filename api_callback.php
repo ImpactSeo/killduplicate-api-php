@@ -11,12 +11,23 @@ $result_dir = __DIR__ . '/results/';
 
 if($rawData)
 {
+	## Take action in your workflow
+	# update database field, send email ...
+	if($rawData->duplicate===1)
+	{
+		# This text is duplicated : use at your own risk !
+	}
+	else
+	{
+		# This text is not duplicated, it is safe to use it.
+	}
+
+	## Example : saving result on filesystem
 	# Create results directory if missing
 	if(!is_dir($result_dir))
 	{
 		mkdir($result_dir, 0777);
 	}
-
 	# Test directory is writable
 	if(is_writable($result_dir))
 	{
@@ -37,6 +48,7 @@ if($rawData)
 	{
 		error_log('api_callback - Make directory ' . $result_dir . ' writable !');
 	}
+
 }
 else
 {

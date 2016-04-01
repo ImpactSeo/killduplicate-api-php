@@ -33,7 +33,7 @@ if(isset($_GET['scan_id']))
 		$scan_result = file_get_contents($filename);
 		$scan_result = json_decode($scan_result);
 		echo 'Scan details for scan_id : ' . $scan_id . ':<br>';
-		echo '<pre>'.$scan_result.'</pre>';
+		echo '<pre>'.json_encode($scan_result, JSON_PRETTY_PRINT).'</pre>';
 	}
 	else
 	{
