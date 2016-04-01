@@ -4,7 +4,7 @@
 $rawData = file_get_contents("php://input");
 $rawData = json_decode($rawData);
 
-error_log('api_callback  - text id : ' . $rawData->id)
+error_log('api_callback  - text id : ' . $rawData->id);
 error_log('api_callback  - result : ' . print_r($rawData, true));
 
 if($rawData)

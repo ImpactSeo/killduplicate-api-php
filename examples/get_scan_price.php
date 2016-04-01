@@ -15,14 +15,15 @@ $text = file_get_contents(__DIR__ . '/../texts/text-example-1.txt');
 
 # Get scan price 'json'
 $cost_response = get_scan_price($text, 'json');
-echo $cost_response;
+// echo $cost_response;
 $cost_json = json_decode($cost_response);
-print_r($cost_json, true);
+// print_r($cost_json, true);
 if($cost_json)
 {
 	if($cost_json->status==='success')
 	{
-		echo 'Scanning this text will cost '.$cost_json->data->credits.' credits. You have '. $cost_json->data->account . ' remaining credits.';
+		echo 'Scanning this text will cost '.$cost_json->data->credits.' credits. You have '. $cost_json->data->account . ' remaining credits.<br>';
+		echo '<pre>'.$text.'</pre>';
 	}
 	else
 	{
