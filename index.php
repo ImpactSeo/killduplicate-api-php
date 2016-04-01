@@ -20,6 +20,10 @@ if(API_CALLBACK==='YOUR_API_CALLBACK')
 	echo '<span style="color:red;text-align:center">PLEASE SET YOUR API CALLBACK IN config.php</span><br>';
 }
 
+if(!is_dir($result_dir) || !is_writable($result_dir))
+{
+	echo '<span style="color:red;text-align:center">PLEASE SET results DIRECTORY WRITE PERMISSIONS</span><br>';}
+
 ?>
 
 <a href="examples/get_credits.php">Get your credits</a><br>
