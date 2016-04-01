@@ -4,8 +4,8 @@
 $rawData = file_get_contents("php://input");
 $rawData = json_decode($rawData);
 
-error_log('api_callback  - text id : ' . $rawData->id);
-error_log('api_callback  - result : ' . print_r($rawData, true));
+// error_log('api_callback  - text id : ' . $rawData->id);
+// error_log('api_callback  - result : ' . print_r($rawData, true));
 
 $result_dir = __DIR__ . '/results/';
 
@@ -22,7 +22,7 @@ if($rawData)
 	{
 		# Save results in database or folder
 		$filename = $result_dir . $rawData->id . '.txt';
-		$saved = file_put_contents($filename, $rawData);
+		$saved = file_put_contents($filename, json_encode($rawData));
 		if($saved!==false)
 		{
 			# Result saved

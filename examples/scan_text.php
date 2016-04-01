@@ -19,9 +19,9 @@ $text = file_get_contents(__DIR__ . '/../texts/text-example-1.txt');
 
 # Scan text 'json'
 $scan_response = scan_text($text, $format, $result);
-// echo $scan_response;
+echo $scan_response;
 $scan_json = json_decode($scan_response);
-// print_r($scan_json, true);
+print_r($scan_json, true);
 if($scan_json)
 {
 	if($scan_json->status==='success')

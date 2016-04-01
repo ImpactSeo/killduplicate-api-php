@@ -28,5 +28,5 @@ chgrp -R www-data vendor/impact-seo/killduplicate-api-php/results
 chmod -R 775 vendor/impact-seo/killduplicate-api-php/results
 ```
 
-## Testing different return formats
-works in progress
+## To Do
+Add different return formats : xml,txt

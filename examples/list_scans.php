@@ -27,15 +27,17 @@ foreach ($files as $file)
 if(isset($_GET['scan_id']))
 {
 	$scan_id = $_GET['scan_id'];
-	if(file_exists($results_dir.$scan_id))
+	$filename = $results_dir.$scan_id . '.txt';
+	if(file_exists($filename))
 	{
-		$scan_result = file_get_contents($results_dir.$scan_id);
+		$scan_result = file_get_contents($filename);
+		$scan_result = json_decode($scan_result);
 		echo 'Scan details for scan_id : ' . $scan_id . ':<br>';
 		echo '<pre>'.$scan_result.'</pre>';
 	}
 	else
 	{
-		echo 'File not found for scan_id : ' . $scan_id;
+		echo 'File not found : ' . $filename;
 	}
 }
 
