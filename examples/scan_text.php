@@ -14,33 +14,46 @@ require_once __DIR__ . '/../api_calls.php';
 $format = 'json';
 # How do you wish result : short|long
 $result = 'long';
-# Load your text
-$text = file_get_contents(__DIR__ . '/../texts/text-example-1.txt');
+# Directory where texts to scan are stored
+$texts_dir = __DIR__ . '/../texts/';
 
-# Scan text 'json'
-$scan_response = scan_text($text, $format, $result);
-echo $scan_response;
-$scan_json = json_decode($scan_response);
-print_r($scan_json, true);
-if($scan_json)
+# Load your texts
+$texts = scandir($texts_dir);
+foreach ($texts as $text)
 {
-	if($scan_json->status==='success')
+	if(pathinfo($texts_dir.$text, PATHINFO_EXTENSION)==='txt')
 	{
-		$text_id = $scan_json->data->id;
-		$text_scan_cost = $scan_json->data->credits;
+		//$scan_id = pathinfo($results_dir.$file, PATHINFO_FILENAME);
 
-		echo 'You should store this text id (or API Call Id) <strong>' . $text_id . '</strong> for retrieving it in callback. This scan cost you ' . $text_scan_cost . ' credits. <br>';
-		echo '<pre>'.$text.'</pre>';
-	}
-	else
-	{
-		echo 'An error occured : ' . $scan_json->message; 
+		$text = file_get_contents($texts_dir.$text);
+
+		# Scan text 'json'
+		$scan_response = scan_text($text, $format, $result);
+		//echo $scan_response;
+		$scan_json = json_decode($scan_response);
+		//print_r($scan_json, true);
+		if($scan_json)
+		{
+			if($scan_json->status==='success')
+			{
+				$text_id = $scan_json->data->id;
+				$text_scan_cost = $scan_json->data->credits;
+
+				echo 'You should store this text id (or API Call Id) <strong>' . $text_id . '</strong> for retrieving it in callback. This scan cost you ' . $text_scan_cost . ' credits. <br>';
+				echo '<pre>'.$text.'</pre>';
+			}
+			else
+			{
+				echo 'An error occured : ' . $scan_json->message; 
+			}
+		}
+		else
+		{
+			echo 'An error occured : ' . $scan_response;	
+		}
 	}
 }
-else
-{
-	echo 'An error occured : ' . $scan_response;	
-}
+
 
 
 # Scan text 'txt'

@@ -19,7 +19,14 @@ foreach ($files as $file)
 	if(pathinfo($results_dir.$file, PATHINFO_EXTENSION)==='txt')
 	{
 		$scan_id = pathinfo($results_dir.$file, PATHINFO_FILENAME);
-		echo '<a href="?scan_id='.$scan_id.'">Scan '.$scan_id.'</a><br>';
+		
+		$result = file_get_contents($results_dir.$file);
+		$result = json_decode($result);
+		
+		echo $result->resume . ' ';
+		echo '<a href="?scan_id='.$scan_id.'">Scan '.$scan_id.'</a>';
+		echo $result->duplicate==1 ? ' is duplicated' : ' is not duplicated';
+		echo '<br>';
 	}
 }
 

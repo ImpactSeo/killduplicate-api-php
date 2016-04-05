@@ -13,7 +13,7 @@ if($rawData)
 {
 	## Take action in your workflow
 	# update database field, send email ...
-	if($rawData->duplicate===1)
+	if($rawData->duplicate==1)
 	{
 		# This text is duplicated : use at your own risk !
 	}
