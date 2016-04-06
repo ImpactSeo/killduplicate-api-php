@@ -10,7 +10,7 @@
 
 require_once __DIR__ . '/../api_calls.php';
 
-# Set your desired return format : json|xml|txt
+# Set your desired return format : json|xml
 $format = 'json';
 # How do you wish result : short|long
 $result = 'long';
@@ -24,14 +24,11 @@ foreach ($texts as $text)
 	if(pathinfo($texts_dir.$text, PATHINFO_EXTENSION)==='txt')
 	{
 		//$scan_id = pathinfo($results_dir.$file, PATHINFO_FILENAME);
-
 		$text = file_get_contents($texts_dir.$text);
 
-		# Scan text 'json'
+		# Scan text with 'json' answer
 		$scan_response = scan_text($text, $format, $result);
-		//echo $scan_response;
 		$scan_json = json_decode($scan_response);
-		//print_r($scan_json, true);
 		if($scan_json)
 		{
 			if($scan_json->status==='success')
@@ -55,16 +52,48 @@ foreach ($texts as $text)
 }
 
 
+/*
+# Set your desired return format : json|xml
+$format = 'xml';
+# How do you wish result : short|long
+$result = 'long';
+# Directory where texts to scan are stored
+$texts_dir = __DIR__ . '/../texts/';
 
-# Scan text 'txt'
-// $scan = scan_text($text, 'txt');
-// $scan = explode("\n", $scan);
-// echo 'Scanning this text will cost '.$scan[3].' credits. You have '. $scan[4] . ' remaining credits.';
+# Load your texts
+$texts = scandir($texts_dir);
+foreach ($texts as $text)
+{
+	if(pathinfo($texts_dir.$text, PATHINFO_EXTENSION)==='txt')
+	{
+		//$scan_id = pathinfo($results_dir.$file, PATHINFO_FILENAME);
+		$text = file_get_contents($texts_dir.$text);
 
-# Scan text 'xml'
-// $scan = scan_text($text, 'xml');
-// $scan = simplexml_load_string(trim($scan), "SimpleXMLElement", LIBXML_NOEMPTYTAG);
-// echo 'Scanning this text will cost '.(string)$scan->data->credits.' credits. You have '. (string)$scan->data->account . ' remaining credits.';
+		# Scan text with 'xml' answer
+		$scan_response = scan_text($text, $format, $result);
+		$scan_xml = simplexml_load_string(trim($scan_response), "SimpleXMLElement", LIBXML_NOEMPTYTAG);
+		if($scan_xml)
+		{
+			if((string)$scan_xml->status==='success')
+			{
+				$text_id = (string)$scan_xml->data->id;
+				$text_scan_cost = (string)$scan_xml->data->credits;
+
+				echo 'You should store this text id (or API Call Id) <strong>' . $text_id . '</strong> for retrieving it in callback. This scan cost you ' . $text_scan_cost . ' credits. <br>';
+				echo '<pre>'.$text.'</pre>';
+			}
+			else
+			{
+				echo 'An error occured : ' . $scan_xml->message; 
+			}
+		}
+		else
+		{
+			echo 'An error occured : ' . $scan_response;	
+		}
+	}
+}
+*/		
 
 ?>
 

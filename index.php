@@ -30,11 +30,11 @@ if(!is_dir($result_dir) || !is_writable($result_dir))
 <h2>Simple examples (dive into code to integrate into your own service)</h2>
 <a href="examples/get_credits.php">Get your credits</a><br>
 <a href="examples/get_scan_price.php">Get scan price</a><br>
-<a href="examples/scan_text.php">Scan Text</a> (put your text content in texts/text-example-1.txt)<br>
+<a href="examples/scan_text.php">Scan Text</a> (put your texts in texts folder)<br>
 <a href="examples/list_scans.php">List Scans</a><br>
 
 <h2>API Web interface</h2>
-Login to your killduplicate account and simply drag and drop files to scan (supported extensions are pdf, doc, docx, txt).
+Login to your <a href="https://www.killduplicate.com/en/login-email" target="_blank">killduplicate account</a> and simply drag and drop files to scan (supported extensions are pdf, doc, docx, txt).
 
 </body>
 </html>

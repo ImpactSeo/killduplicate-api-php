@@ -10,9 +10,8 @@
 
 require_once __DIR__ . '/../api_calls.php';
 
-# Get your credits 'json'
+# Get your credits with 'json' answer
 $credits_response = get_credits('json');
-//echo $credits . '<br>';
 $credits_json = json_decode($credits_response);
 if($credits_json)
 {
@@ -32,18 +31,27 @@ else
 	echo 'An error occured : ' . $credits_response;
 }
 
-//print_r($credits);
-//echo 'You have ' . $credits_response->data->credits . ' remaining credits';
 
-# Get your credits 'txt'
-// $credits = get_credits('txt');
-// $credits = explode("\n", $credits);
-// echo 'You have '.$credits[3].' remaining credits';
-
-# Get your credits 'xml'
-// $credits = get_credits('xml');
-// $credits = simplexml_load_string(trim($credits), "SimpleXMLElement", LIBXML_NOEMPTYTAG);
-// echo 'You have '.(string)$credits->data->credits.' remaining credits';
+# Get your credits with 'xml' answer
+/*$credits_response = get_credits('xml');
+$credits_xml = simplexml_load_string(trim($credits_response), "SimpleXMLElement", LIBXML_NOEMPTYTAG);
+if($credits_xml)
+{
+	if((string)$credits_xml->status==='success')
+	{
+		$user_remaining_credits = (string)$credits_xml->data->credits;
+		
+		echo 'You have ' . $user_remaining_credits . ' remaining credits';
+	}
+	else
+	{
+		echo 'An error occured : ' . $credits_xml->message; 
+	}
+}
+else
+{
+	echo 'An error occured : ' . $credits_response;
+}*/
 
 ?>
 

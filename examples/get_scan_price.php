@@ -13,11 +13,9 @@ require_once __DIR__ . '/../api_calls.php';
 # Load your text
 $text = file_get_contents(__DIR__ . '/../texts/text-example-1.txt');
 
-# Get scan price 'json'
+# Get scan price with 'json' answer
 $cost_response = get_scan_price($text, 'json');
-// echo $cost_response;
 $cost_json = json_decode($cost_response);
-// print_r($cost_json, true);
 if($cost_json)
 {
 	if($cost_json->status==='success')
@@ -39,16 +37,28 @@ else
 }
 
 
-# Get scan price 'txt'
-// $cost = get_scan_price($text, 'txt');
-// $cost = explode("\n", $cost);
-// echo 'Scanning this text will cost '.$cost[3].' credits. You have '. $cost[4] . ' remaining credits.';
+# Get scan price with 'xml' answer
+/*$cost_response = get_scan_price($text, 'xml');
+$cost_xml = simplexml_load_string(trim($cost_response), "SimpleXMLElement", LIBXML_NOEMPTYTAG);
+if($cost_xml)
+{
+	if((string)$cost_xml->status==='success')
+	{
+		$text_scan_cost = (string)$cost_xml->data->credits;
+		$user_remaining_credits = (string)$cost_xml->data->account;
 
-# Get scan price 'xml'
-// $cost = get_scan_price($text, 'xml');
-// $cost = simplexml_load_string(trim($cost), "SimpleXMLElement", LIBXML_NOEMPTYTAG);
-// echo 'Scanning this text will cost '.(string)$cost->data->credits.' credits. You have '. (string)$cost->data->account . ' remaining credits.';
-
+		echo 'Scanning this text will cost ' . $text_scan_cost . ' credits. You have '. $user_remaining_credits . ' remaining credits.<br>';
+		echo '<pre>'.$text.'</pre>';
+	}
+	else
+	{
+		echo 'An error occured : ' . $cost_xml->message; 
+	}
+}
+else
+{
+	echo 'An error occured : ' . $cost_response;	
+}*/
 ?>
 
 </body>

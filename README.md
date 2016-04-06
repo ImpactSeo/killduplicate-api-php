@@ -13,21 +13,6 @@ or download and uncompress archive
 - Give results folder write permissions (webserver user's ownership. www-data for Ubuntu, apache ...)
 - Go to www.yourwebsite.com/vendor/impact-seo/killduplicate-api-php/index.php if you installed through composer or adapt path to where you extracted lib.
 
-## API Documentation
-
-Connect to your [killduplicate account](https://www.killduplicate.com/en/login-email).
-
-## Troubleshouting
-
-Be sure your callback is reachable over the network. 
-
-For file permission issues (replace www-data by your webserver username)
-```
-chown -R www-data vendor/impact-seo/killduplicate-api-php/results
-chgrp -R www-data vendor/impact-seo/killduplicate-api-php/results
-chmod -R 775 vendor/impact-seo/killduplicate-api-php/results
-```
-
 ## API Specifications
 
 ### Get your remaining credits
@@ -36,7 +21,7 @@ GET /api/public/credits/API_KEY
 ```
 Params
 ```
-API_KEY = Your Private API Key
+API_KEY = Your Private API Key # required
 ```
 Returns
 ```
@@ -49,8 +34,8 @@ POST /api/public/price
 ```
 Params
 ```
-API_KEY = Your Private API Key
-TEXT = Your Text (UTF-8 encoded)
+API_KEY = Your Private API Key # required
+TEXT = Your Text (UTF-8 encoded) # required
 ```
 
 ### Scan Text
@@ -62,7 +47,7 @@ Params
 API_KEY = Your Private API Key # required
 TEXT = Your Text (UTF-8 encoded) # required
 CALLBACK = Your callback url # required
-FORMAT = desired return format # optional - possible values : json|txt|xml - default : json 
+FORMAT = desired return format # optional - possible values : json|xml - default : json 
 RESULT = desired return result type # optional - possible values : short|long - default : long
 ```
 Returns
@@ -70,7 +55,6 @@ Immediate response
 ```
 text_id : store this id for retrieving result in callback
 credits : how much credits this scan has cost
-credits_remaining ?
 ```
 Callback Response
 ```
@@ -80,7 +64,7 @@ Callback Response
     "filename": null,
     "credits": "1",
     "date": "2016-04-01 16:41:43",
-    "callback": "http:\/\/mywebsite.com\/vendor\/impact-seo\/killduplicate-api-php\/api_callback.php",
+    "callback": "http:\/\/www.your-website.com\/vendor\/impact-seo\/killduplicate-api-php\/api_callback.php",
     "format": "json",
     "result": "long",
     "duplicate": "0",
@@ -104,16 +88,23 @@ Callback Response
 ### Errors
 Possible error messages
 ```
-UNKWONW_API_KEY
-UNAUTHORIZED_IP
+UNKWONW_API_KEY : check your API key is corectly set in config.php ([Get your API Key](https://www.killduplicate.com/en/user/api))
+UNAUTHORIZED_IP : check IP where script is run from is added to whitelist ([Chech Authorized IPs](https://www.killduplicate.com/en/user/api))
 TOO_MANY_REQUESTS : only one request per second is allowed
-NO_MORE_CREDITS : buy credits you need to buy x credits
-EMPTY_TEXT_AND_URL : neither text nor url provided
-INTERNAL_ERROR : 
-UNKNOWN_FORMAT : can only be json|txt|xml
+NO_MORE_CREDITS : you dont' have enough credits to run this scan
+EMPTY_TEXT_AND_URL : neither text nor url were provided
+INTERNAL_ERROR : internal server error (please contact admin)
+UNKNOWN_FORMAT : can only be json|xml
 INVALID_CALLBACK_URL : invalid callback URL 
 ```
 
 
-## To Do
-Add different return formats : xml,txt
+## Troubleshouting
+
+Be sure your callback is reachable over the network. 
+
+For file permission issues (replace www-data by your webserver username)
+```
+chown -R www-data:www-data vendor/impact-seo/killduplicate-api-php/results
+chmod -R 775 vendor/impact-seo/killduplicate-api-php/results
+```
