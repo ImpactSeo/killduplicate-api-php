@@ -12,11 +12,12 @@ require_once __DIR__ . '/config.php';
  *
  * @return string $response Text response
  */
-function scan_text($text, $format = 'json', $result = 'short')
+function scan_text($text, $format = 'json', $result = 'short', $exclude_domains = [])
 {
 	$post_options = [
 		'api_key' => API_KEY,
 		'text' => $text,
+		'exclude_domains' => $exclude_domains,
 		'callback' => API_CALLBACK,
 		'format' => $format,
 		'result' => $result

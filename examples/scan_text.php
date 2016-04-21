@@ -16,6 +16,8 @@ $format = 'json';
 $result = 'long';
 # Directory where texts to scan are stored
 $texts_dir = __DIR__ . '/../texts/';
+# Set a list of excluded domains from duplicate search 
+$exclude_domains = ['www.free.fr', 'data.gouv.fr'];
 
 # Load your texts
 $texts = scandir($texts_dir);
@@ -27,7 +29,7 @@ foreach ($texts as $text)
 		$text = file_get_contents($texts_dir.$text);
 
 		# Scan text with 'json' answer
-		$scan_response = scan_text($text, $format, $result);
+		$scan_response = scan_text($text, $format, $result, $exclude_domains);
 		$scan_json = json_decode($scan_response);
 		if($scan_json)
 		{

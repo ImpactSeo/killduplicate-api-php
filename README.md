@@ -17,11 +17,11 @@ or download and uncompress archive
 
 ### Get your remaining credits
 ```
-GET /api/public/credits/API_KEY
+GET /api/public/credits/api_key
 ```
 Params
 ```
-API_KEY = Your Private API Key # required
+api_key = Your Private API Key # required
 ```
 Returns
 ```
@@ -34,8 +34,8 @@ POST /api/public/price
 ```
 Params
 ```
-API_KEY = Your Private API Key # required
-TEXT = Your Text (UTF-8 encoded) # required
+api_key = Your Private API Key # required
+text = Your Text (UTF-8 encoded) # required
 ```
 
 ### Scan Text
@@ -44,11 +44,12 @@ POST /api/public/scan
 ```
 Params
 ```
-API_KEY = Your Private API Key # required
-TEXT = Your Text (UTF-8 encoded) # required
-CALLBACK = Your callback url # required
-FORMAT = desired return format # optional - possible values : json|xml - default : json 
-RESULT = desired return result type # optional - possible values : short|long - default : long
+api_key = Your Private API Key # required
+text = Your Text (UTF-8 encoded) # required
+exclude_domains = Array of excluded domain names from duplicate search # optional
+callback = Your callback url # required
+format = desired return format # optional - possible values : json|xml - default : json 
+result = desired return result type # optional - possible values : short|long - default : long
 ```
 Returns
 Immediate response
@@ -68,7 +69,9 @@ Callback Response
     "format": "json",
     "result": "long",
     "duplicate": "0",
+    "dup_percentage": "0",
     "text": null,
+    "exclude_domains": {},
     "search_dupes": {
         "1692": {
             "id": "1692",
