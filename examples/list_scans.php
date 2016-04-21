@@ -23,12 +23,20 @@ foreach ($files as $file)
 		
 		$result = file_get_contents($results_dir.$file);
 		$result = json_decode($result);
-		
-		echo '<tr>';		
-		echo '<td>' . $result->resume . '</td>';
-		echo '<td><a href="?scan_id='.$scan_id.'">Scan '.$scan_id.'</a></td>';
-		echo '<td>' . ($result->duplicate==1 ? ' is duplicated' : ' is not duplicated') . '</td>';
-		echo '</tr>';
+		if($result)
+		{
+			echo '<tr>';		
+			echo '<td>' . $result->resume . '</td>';
+			echo '<td><a href="?scan_id='.$scan_id.'">Scan '.$scan_id.'</a></td>';
+			echo '<td>' . ($result->duplicate==1 ? ' is duplicated' : ' is not duplicated') . '</td>';
+			echo '</tr>';
+		}
+		else
+		{
+			echo '<tr>';		
+			echo '<td colspan="3">Error reading/decoding' . $results_dir.$file . '</td>';
+			echo '</tr>';
+		}
 	}
 }
 echo '</table>';
