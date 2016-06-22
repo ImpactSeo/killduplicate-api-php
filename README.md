@@ -101,6 +101,14 @@ UNKNOWN_FORMAT : can only be json|xml
 INVALID_CALLBACK_URL : invalid callback URL 
 ```
 
+## UTF-8 encoding
+
+All texts MUST be encoded in VALID UTF-8. If you load some old Microsoft Words Documents you might have invalid UTF-8 characters like strange quotes. To be sure you have valid UTF-8 encoded texts you can check it :
+```
+$validUTF8 = ! (false === mb_detect_encoding($text, 'UTF-8', true));
+```
+If your text has invalid UTF-8 characters, you can use some home made functions to convert invalid encoding (problem is that some characters in some encodings can be converted into multiple UTF-8 characters you have to unilateraly decide to which character it will be converted to ... and that's why it's your responsability to make UTF-8 conversion when you use API).
+[Gist : Clean UTF-8](https://gist.github.com/ImpactSeo/78561612047efa7591264b8276357a4b)
 
 ## Troubleshouting
 
