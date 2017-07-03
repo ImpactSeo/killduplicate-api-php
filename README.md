@@ -49,7 +49,6 @@ text = Your Text (UTF-8 encoded) # required
 exclude_domains = Array of excluded domain names from duplicate search # optional
 callback = Your callback url # required
 format = desired return format # optional - possible values : json|xml - default : json 
-result = desired return result type # optional - possible values : short|long - default : long
 ```
 Returns
 Immediate response
