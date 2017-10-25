@@ -4,6 +4,40 @@ require_once __DIR__ . '/config.php';
 
 
 /**
+ * Get scan results 
+ *
+ * @param int $scan_id Scan ID
+ *
+ * @return string $response Text response
+ */
+function get_scan_result($scan_id)
+{
+	$curl_options = [
+		CURLOPT_URL => API_ENDPOINT . 'scan/' . rawurlencode(API_KEY) . '/' . $scan_id,
+	    CURLOPT_SSL_VERIFYPEER => false,
+	    CURLOPT_RETURNTRANSFER => true,
+	    CURLOPT_CONNECTTIMEOUT => 30,
+	    CURLOPT_TIMEOUT => 30,
+	    CURLOPT_FOLLOWLOCATION => true,
+	    CURLOPT_MAXREDIRS => 5
+	];
+
+	$curl = curl_init();
+	curl_setopt_array($curl, $curl_options);
+	$response = curl_exec($curl);
+
+	# Debug
+	// $info = curl_getinfo($curl);
+	// echo 'response'.'<br>';
+	// echo '<pre>';print_r($response);echo '</pre>';
+	// echo 'info'.'<br>';
+	// echo '<pre>';print_r($info);echo '</pre>';
+
+	return $response;
+}
+
+
+/**
  * Get scan cost in credits 
  *
  * @param string $text Text to price scan

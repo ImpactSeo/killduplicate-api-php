@@ -32,6 +32,7 @@ if(!is_dir($result_dir) || !is_writable($result_dir))
 <a href="examples/get_scan_price.php">Get scan price</a><br>
 <a href="examples/scan_text.php">Scan Text</a> (put your texts in texts folder)<br>
 <a href="examples/list_scans.php">List Scans</a><br>
+<a href="examples/get_scan_result.php">Get scan result</a><br>
 
 <h2>API Web interface</h2>
 Login to your <a href="https://www.killduplicate.com/en/login-email" target="_blank">killduplicate account</a> and simply drag and drop files to scan (supported extensions are pdf, doc, docx, txt).
