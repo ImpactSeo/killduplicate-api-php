@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>KillDuplicate API PHP</title>
 	<meta charset="utf-8">
+	<title>KillDuplicate API PHP</title>
 </head>
 <body>
 
@@ -36,29 +36,6 @@ else
 	echo 'An error occured : ' . $cost_response;	
 }
 
-
-# Get scan price with 'xml' answer
-/*$cost_response = get_scan_price($text, 'xml');
-$cost_xml = simplexml_load_string(trim($cost_response), "SimpleXMLElement", LIBXML_NOEMPTYTAG);
-if($cost_xml)
-{
-	if((string)$cost_xml->status==='success')
-	{
-		$text_scan_cost = (string)$cost_xml->data->credits;
-		$user_remaining_credits = (string)$cost_xml->data->account;
-
-		echo 'Scanning this text will cost ' . $text_scan_cost . ' credits. You have '. $user_remaining_credits . ' remaining credits.<br>';
-		echo '<pre>'.$text.'</pre>';
-	}
-	else
-	{
-		echo 'An error occured : ' . $cost_xml->message; 
-	}
-}
-else
-{
-	echo 'An error occured : ' . $cost_response;	
-}*/
 ?>
 
 </body>

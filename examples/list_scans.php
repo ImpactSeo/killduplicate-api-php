@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>KillDuplicate API PHP</title>
 	<meta charset="utf-8">
+	<title>KillDuplicate API PHP</title>
 </head>
 <body>
 

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>KillDuplicate API PHP</title>
 	<meta charset="utf-8">
+	<title>KillDuplicate API PHP</title>
 </head>
 <body>
 
@@ -30,28 +30,6 @@ else
 {
 	echo 'An error occured : ' . $credits_response;
 }
-
-
-# Get your credits with 'xml' answer
-/*$credits_response = get_credits('xml');
-$credits_xml = simplexml_load_string(trim($credits_response), "SimpleXMLElement", LIBXML_NOEMPTYTAG);
-if($credits_xml)
-{
-	if((string)$credits_xml->status==='success')
-	{
-		$user_remaining_credits = (string)$credits_xml->data->credits;
-		
-		echo 'You have ' . $user_remaining_credits . ' remaining credits';
-	}
-	else
-	{
-		echo 'An error occured : ' . $credits_xml->message; 
-	}
-}
-else
-{
-	echo 'An error occured : ' . $credits_response;
-}*/
 
 ?>
 
