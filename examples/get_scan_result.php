@@ -27,7 +27,7 @@ if(isset($_GET['scan_id']))
 			if(isset($rawData->data) && isset($rawData->data->id))
 			{
 				$filename = $result_dir . $rawData->data->id . '.txt';
-				if(true===$saved = file_put_contents($filename, json_encode($rawData->data)))
+				if(false!==$saved = file_put_contents($filename, json_encode($rawData->data)))
 				{
 					# Result saved
 					error_log('get_scan_result - ' . $filename . ' saved');
