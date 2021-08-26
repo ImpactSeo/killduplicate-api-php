@@ -90,12 +90,12 @@ Callback Response
 ### Get Scan 
 If for some reason, previous callback function is not send from our servers or not received by yours, you can force a call to retrieve specific scan status. To know if a scan has finished, you have to compare phrases_to_check against phrases_checked parameters. We stongly advise you to set up a callback function and use this call only to retrieve lost results. 
 ```
-GET /api/public/scan
+GET /api/public/scan/API_KEY/SCAN_ID
 ```
 Params
 ```
-api_key = Your Private API Key # required
-scan_id = Your scan id # required
+API_KEY = Your Private API Key # required
+SCAN_ID = Your scan id # required
 ```
 Returns
 Immediate response similar to callback response
